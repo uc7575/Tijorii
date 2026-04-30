@@ -6,7 +6,7 @@
   <title>Tijorii — Crafted in India. Built to Last a Lifetime.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&family=Raleway:wght@100;200;300;400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -56,12 +56,13 @@
     }
 
     .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.75rem;
-      font-weight: 700;
+      font-family: 'Raleway', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 200;
       color: var(--gold);
-      letter-spacing: 0.12em;
+      letter-spacing: 0.42em;
       text-decoration: none;
+      text-transform: uppercase;
     }
 
     .nav-links {
@@ -294,6 +295,189 @@
       background: var(--gold-dim);
       border-color: var(--gold);
       transform: translateY(-2px);
+    }
+
+    /* ─── HERO SUITCASE SHOWCASE ────────────────────────── */
+    .hero-suitcase {
+      margin-top: 4rem;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
+
+    .hero-suitcase svg {
+      filter: drop-shadow(0 30px 60px rgba(0,0,0,0.6)) drop-shadow(0 0 40px rgba(201,168,76,0.08));
+      max-width: 340px;
+      width: 100%;
+    }
+
+    /* ─── PHOTO CARD (artisan / story) ──────────────────── */
+    .photo-card {
+      position: relative;
+      border: 1px solid var(--gold-border);
+      overflow: hidden;
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.85) saturate(0.9);
+      transition: transform 0.6s ease, filter 0.4s;
+    }
+
+    .photo-card:hover img {
+      transform: scale(1.03);
+      filter: brightness(0.9) saturate(1);
+    }
+
+    .photo-card-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(6,8,15,0.9));
+      padding: 2rem 1.5rem 1.2rem;
+    }
+
+    .photo-card-caption p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      color: var(--champagne);
+      letter-spacing: 0.04em;
+    }
+
+    .photo-card-caption span {
+      font-size: 0.7rem;
+      color: var(--gold);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      display: block;
+      margin-top: 0.2rem;
+    }
+
+    .photo-card-fallback {
+      display: none;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(145deg, rgba(201,168,76,0.04), rgba(10,14,26,0.95));
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 3rem 2rem;
+      min-height: 420px;
+    }
+
+    /* ─── MATERIAL STRIP ─────────────────────────────────── */
+    .material-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      margin: 3rem 0 2rem;
+    }
+
+    .material-photo {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+
+    .material-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.7) saturate(0.8);
+      transition: transform 0.5s, filter 0.4s;
+    }
+
+    .material-photo:hover img {
+      transform: scale(1.05);
+      filter: brightness(0.85) saturate(1);
+    }
+
+    .material-photo-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(6,8,15,0.85));
+      padding: 1.5rem 1rem 0.8rem;
+    }
+
+    .material-photo-label p {
+      font-size: 0.78rem;
+      color: var(--champagne);
+      letter-spacing: 0.08em;
+    }
+
+    .material-photo-label span {
+      font-size: 0.64rem;
+      color: var(--gold);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      display: block;
+      margin-top: 0.1rem;
+      opacity: 0.8;
+    }
+
+    /* ─── PRICING SHOWCASE LAYOUT ────────────────────────── */
+    .pricing-layout {
+      display: grid;
+      grid-template-columns: 1fr 520px;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .pricing-suitcase {
+      position: sticky;
+      top: 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .pricing-suitcase svg {
+      max-width: 300px;
+      width: 100%;
+      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5)) drop-shadow(0 0 30px rgba(201,168,76,0.06));
+    }
+
+    .suitcase-specs {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      width: 100%;
+      border: 1px solid rgba(201,168,76,0.12);
+      padding: 1.2rem 1.5rem;
+    }
+
+    .suitcase-spec-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      border-bottom: 1px solid rgba(201,168,76,0.07);
+      padding-bottom: 0.4rem;
+    }
+
+    .suitcase-spec-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .suitcase-spec-row .label { color: var(--gold); opacity: 0.7; letter-spacing: 0.08em; }
+    .suitcase-spec-row .value { color: var(--offwhite); opacity: 0.8; }
+
+    @media (max-width: 1024px) {
+      .pricing-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .pricing-suitcase { position: static; }
+      .material-strip { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      .material-strip { grid-template-columns: 1fr; }
+      .hero-suitcase svg { max-width: 260px; }
     }
 
     /* Hero bottom border */
@@ -705,11 +889,12 @@
     }
 
     .footer-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 3rem;
-      font-weight: 700;
+      font-family: 'Raleway', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 100;
       color: var(--gold);
-      letter-spacing: 0.15em;
+      letter-spacing: 0.55em;
+      text-transform: uppercase;
       display: block;
       margin-bottom: 0.5rem;
     }
@@ -818,6 +1003,162 @@
       <a href="#pricing" class="btn-primary">Pre-order Now</a>
     </div>
 
+    <!-- Hero suitcase illustration -->
+    <div class="hero-suitcase fade-in fade-in-delay-4">
+      <svg viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg" aria-label="Tijorii aluminum suitcase illustration">
+        <defs>
+          <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%"   stop-color="#1c2032"/>
+            <stop offset="25%"  stop-color="#262d42"/>
+            <stop offset="55%"  stop-color="#2e3650"/>
+            <stop offset="78%"  stop-color="#232a3d"/>
+            <stop offset="100%" stop-color="#181d2c"/>
+          </linearGradient>
+          <linearGradient id="sideGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#0c0f19"/>
+            <stop offset="100%" stop-color="#141826"/>
+          </linearGradient>
+          <linearGradient id="topGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%"   stop-color="#2a3045"/>
+            <stop offset="100%" stop-color="#1a1f30"/>
+          </linearGradient>
+          <linearGradient id="leatherGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%"   stop-color="#9b6530"/>
+            <stop offset="100%" stop-color="#5c3a18"/>
+          </linearGradient>
+          <linearGradient id="wheelGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%"   stop-color="#1a1e2c"/>
+            <stop offset="100%" stop-color="#0d1018"/>
+          </linearGradient>
+          <linearGradient id="lockGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%"   stop-color="#dbb96a"/>
+            <stop offset="100%" stop-color="#a07a30"/>
+          </linearGradient>
+          <pattern id="brushLines" x="0" y="0" width="400" height="3" patternUnits="userSpaceOnUse">
+            <line x1="0" y1="1" x2="400" y2="1" stroke="rgba(255,255,255,0.022)" stroke-width="0.6"/>
+            <line x1="0" y1="2.5" x2="400" y2="2.5" stroke="rgba(0,0,0,0.04)" stroke-width="0.4"/>
+          </pattern>
+          <filter id="caseShadow">
+            <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="rgba(0,0,0,0.7)"/>
+          </filter>
+        </defs>
+
+        <!-- Ground shadow -->
+        <ellipse cx="200" cy="508" rx="145" ry="10" fill="rgba(0,0,0,0.45)"/>
+
+        <!-- 3D top face -->
+        <path d="M62,82 L338,82 L378,62 L102,62 Z" fill="url(#topGrad)"/>
+        <!-- 3D right side face -->
+        <path d="M338,82 L378,62 L378,448 L338,468 Z" fill="url(#sideGrad)"/>
+        <!-- Right side subtle panel line -->
+        <line x1="378" y1="255" x2="338" y2="275" stroke="rgba(201,168,76,0.35)" stroke-width="1.2"/>
+
+        <!-- Main front face -->
+        <rect x="62" y="82" width="276" height="386" rx="7" fill="url(#bodyGrad)" filter="url(#caseShadow)"/>
+        <!-- Brushed texture overlay -->
+        <rect x="62" y="82" width="276" height="386" rx="7" fill="url(#brushLines)" opacity="1"/>
+        <!-- Subtle shine strip on left edge -->
+        <rect x="62" y="82" width="10" height="386" rx="5" fill="rgba(255,255,255,0.04)"/>
+        <!-- Very faint right-edge shadow -->
+        <rect x="326" y="82" width="12" height="386" rx="5" fill="rgba(0,0,0,0.12)"/>
+
+        <!-- Inner panel frame (inset border effect) -->
+        <rect x="76" y="96" width="248" height="358" rx="4" fill="none" stroke="rgba(201,168,76,0.1)" stroke-width="1"/>
+
+        <!-- ─ CORNER LEATHER PATCHES ─ -->
+        <!-- Top-left -->
+        <path d="M62,82 L108,82 L62,128 Z" fill="url(#leatherGrad)" opacity="0.9"/>
+        <path d="M62,82 L108,82" stroke="rgba(201,168,76,0.4)" stroke-width="0.7"/>
+        <path d="M62,82 L62,128" stroke="rgba(201,168,76,0.4)" stroke-width="0.7"/>
+        <!-- Top-right -->
+        <path d="M338,82 L292,82 L338,128 Z" fill="url(#leatherGrad)" opacity="0.9"/>
+        <path d="M292,82 L338,82" stroke="rgba(201,168,76,0.4)" stroke-width="0.7"/>
+        <path d="M338,82 L338,128" stroke="rgba(201,168,76,0.4)" stroke-width="0.7"/>
+        <!-- Bottom-left -->
+        <path d="M62,468 L108,468 L62,422 Z" fill="url(#leatherGrad)" opacity="0.9"/>
+        <path d="M62,468 L108,468" stroke="rgba(201,168,76,0.4)" stroke-width="0.7"/>
+        <path d="M62,422 L62,468" stroke="rgba(201,168,76,0.4)" stroke-width="0.7"/>
+        <!-- Bottom-right -->
+        <path d="M338,468 L292,468 L338,422 Z" fill="url(#leatherGrad)" opacity="0.9"/>
+        <path d="M292,468 L338,468" stroke="rgba(201,168,76,0.4)" stroke-width="0.7"/>
+        <path d="M338,422 L338,468" stroke="rgba(201,168,76,0.4)" stroke-width="0.7"/>
+
+        <!-- ─ TELESCOPING HANDLE ─ -->
+        <!-- Handle guide rails -->
+        <rect x="163" y="68" width="8" height="18" rx="2" fill="#1a1f2e" stroke="rgba(201,168,76,0.4)" stroke-width="0.8"/>
+        <rect x="229" y="68" width="8" height="18" rx="2" fill="#1a1f2e" stroke="rgba(201,168,76,0.4)" stroke-width="0.8"/>
+        <!-- Handle bar -->
+        <rect x="155" y="36" width="90" height="30" rx="15" fill="none" stroke="url(#lockGrad)" stroke-width="2.2"/>
+        <rect x="164" y="36" width="72" height="30" rx="12" fill="rgba(10,14,26,0.85)"/>
+        <!-- Handle grip texture -->
+        <rect x="172" y="44" width="56" height="14" rx="4" fill="rgba(201,168,76,0.07)" stroke="rgba(201,168,76,0.15)" stroke-width="0.7"/>
+
+        <!-- ─ OPENING SEAM ─ -->
+        <rect x="62" y="274" width="276" height="2.5" fill="url(#lockGrad)" opacity="0.75"/>
+        <rect x="62" y="276.5" width="276" height="1.5" fill="rgba(0,0,0,0.5)"/>
+        <!-- Seam rivets (small dots every ~55px) -->
+        <circle cx="92"  cy="275.5" r="2.2" fill="url(#lockGrad)" opacity="0.7"/>
+        <circle cx="147" cy="275.5" r="2.2" fill="url(#lockGrad)" opacity="0.7"/>
+        <circle cx="253" cy="275.5" r="2.2" fill="url(#lockGrad)" opacity="0.7"/>
+        <circle cx="308" cy="275.5" r="2.2" fill="url(#lockGrad)" opacity="0.7"/>
+
+        <!-- ─ TSA LOCK ─ -->
+        <rect x="178" y="260" width="44" height="32" rx="4" fill="url(#lockGrad)"/>
+        <rect x="181" y="263" width="38" height="26" rx="3" fill="#12161f"/>
+        <!-- Dials -->
+        <rect x="184" y="266" width="8" height="6" rx="1.5" fill="#1e2435" stroke="rgba(201,168,76,0.5)" stroke-width="0.7"/>
+        <rect x="196" y="266" width="8" height="6" rx="1.5" fill="#1e2435" stroke="rgba(201,168,76,0.5)" stroke-width="0.7"/>
+        <rect x="208" y="266" width="8" height="6" rx="1.5" fill="#1e2435" stroke="rgba(201,168,76,0.5)" stroke-width="0.7"/>
+        <!-- Dial numbers -->
+        <text x="188" y="272" font-size="4" fill="rgba(201,168,76,0.7)" font-family="Inter" text-anchor="middle">8</text>
+        <text x="200" y="272" font-size="4" fill="rgba(201,168,76,0.7)" font-family="Inter" text-anchor="middle">3</text>
+        <text x="212" y="272" font-size="4" fill="rgba(201,168,76,0.7)" font-family="Inter" text-anchor="middle">1</text>
+        <!-- TSA label -->
+        <text x="200" y="283" font-size="4.5" fill="rgba(201,168,76,0.6)" font-family="Inter" text-anchor="middle" letter-spacing="1.5">TSA</text>
+
+        <!-- ─ BRAND MARK ─ -->
+        <!-- Subtle engraved diamond motif -->
+        <polygon points="200,162 212,175 200,188 188,175" fill="none" stroke="rgba(201,168,76,0.18)" stroke-width="1"/>
+        <polygon points="200,167 207,175 200,183 193,175" fill="none" stroke="rgba(201,168,76,0.1)" stroke-width="0.7"/>
+        <circle cx="200" cy="175" r="2" fill="rgba(201,168,76,0.25)"/>
+        <!-- TIJORII wordmark -->
+        <text x="200" y="214" font-size="11" font-family="Raleway, sans-serif" font-weight="200" letter-spacing="7" fill="rgba(201,168,76,0.28)" text-anchor="middle">TIJORII</text>
+        <!-- India line -->
+        <text x="200" y="228" font-size="5.5" font-family="Inter, sans-serif" font-weight="300" letter-spacing="3.5" fill="rgba(201,168,76,0.18)" text-anchor="middle">MADE IN INDIA</text>
+
+        <!-- ─ SIDE CARRY HANDLE (right face) ─ -->
+        <path d="M352,250 Q378,244 378,262 Q378,280 352,274" fill="none" stroke="url(#lockGrad)" stroke-width="2" stroke-linecap="round"/>
+
+        <!-- ─ BORDER RIVETS ─ -->
+        <!-- Top edge -->
+        <circle cx="80"  cy="84" r="2.5" fill="rgba(201,168,76,0.45)"/>
+        <circle cx="320" cy="84" r="2.5" fill="rgba(201,168,76,0.45)"/>
+        <!-- Side edge rivets -->
+        <circle cx="64"  cy="175" r="2"   fill="rgba(201,168,76,0.3)"/>
+        <circle cx="64"  cy="370" r="2"   fill="rgba(201,168,76,0.3)"/>
+        <circle cx="336" cy="175" r="2"   fill="rgba(201,168,76,0.3)"/>
+        <circle cx="336" cy="370" r="2"   fill="rgba(201,168,76,0.3)"/>
+
+        <!-- ─ SPINNER WHEELS ─ -->
+        <!-- Left wheel -->
+        <rect x="78"  y="466" width="36" height="24" rx="12" fill="url(#wheelGrad)"/>
+        <rect x="82"  y="470" width="28" height="16" rx="8"  fill="#0a0d14"/>
+        <circle cx="96"  cy="478" r="5" fill="#0a0d14"/>
+        <circle cx="96"  cy="478" r="2" fill="#1a1e28"/>
+        <line x1="78"  y1="478" x2="114" y2="478" stroke="rgba(255,255,255,0.04)" stroke-width="0.6"/>
+        <!-- Right wheel -->
+        <rect x="286" y="466" width="36" height="24" rx="12" fill="url(#wheelGrad)"/>
+        <rect x="290" y="470" width="28" height="16" rx="8"  fill="#0a0d14"/>
+        <circle cx="304" cy="478" r="5" fill="#0a0d14"/>
+        <circle cx="304" cy="478" r="2" fill="#1a1e28"/>
+        <line x1="286" y1="478" x2="322" y2="478" stroke="rgba(255,255,255,0.04)" stroke-width="0.6"/>
+
+        <!-- Wheel axle bars -->
+        <rect x="85"  y="464" width="22" height="4" rx="2" fill="rgba(201,168,76,0.25)"/>
+        <rect x="293" y="464" width="22" height="4" rx="2" fill="rgba(201,168,76,0.25)"/>
+      </svg>
+    </div>
+
     <!-- Hero bottom Rajasthani border -->
     <div class="hero-bottom">
       <svg class="raj-divider" viewBox="0 0 1200 44" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
@@ -877,23 +1218,31 @@
         </div>
 
         <div class="fade-in fade-in-delay-3">
-          <div class="artisan-card">
-            <div class="artisan-card-icon">
-              <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Stylised hands at loom motif -->
-                <rect x="12" y="28" width="40" height="2" stroke="#c9a84c" stroke-width="1" stroke-opacity="0.5"/>
-                <rect x="12" y="34" width="40" height="2" stroke="#c9a84c" stroke-width="1" stroke-opacity="0.5"/>
-                <rect x="12" y="40" width="40" height="2" stroke="#c9a84c" stroke-width="1" stroke-opacity="0.5"/>
-                <line x1="20" y1="22" x2="20" y2="46" stroke="#c9a84c" stroke-width="1" stroke-opacity="0.6"/>
-                <line x1="28" y1="18" x2="28" y2="46" stroke="#c9a84c" stroke-width="1" stroke-opacity="0.6"/>
-                <line x1="36" y1="22" x2="36" y2="46" stroke="#c9a84c" stroke-width="1" stroke-opacity="0.6"/>
-                <line x1="44" y1="18" x2="44" y2="46" stroke="#c9a84c" stroke-width="1" stroke-opacity="0.6"/>
-                <polygon points="32,8 38,18 26,18" fill="none" stroke="#c9a84c" stroke-width="1" stroke-opacity="0.7"/>
-                <circle cx="32" cy="8" r="2" fill="#c9a84c" fill-opacity="0.7"/>
+          <div class="photo-card" style="aspect-ratio:3/4;">
+            <img
+              src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=700&q=80"
+              alt="Artisan at work, Jaipur"
+              loading="lazy"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+            />
+            <div class="photo-card-fallback" style="display:none;background:linear-gradient(145deg,rgba(201,168,76,0.05),rgba(10,14,26,0.95));border:1px solid rgba(201,168,76,0.2);min-height:420px;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:3rem 2rem;">
+              <svg width="64" height="64" viewBox="0 0 64 64" fill="none" style="margin-bottom:1.5rem;opacity:0.5">
+                <rect x="12" y="28" width="40" height="2" stroke="#c9a84c" stroke-width="1"/>
+                <rect x="12" y="34" width="40" height="2" stroke="#c9a84c" stroke-width="1" stroke-opacity="0.6"/>
+                <rect x="12" y="40" width="40" height="2" stroke="#c9a84c" stroke-width="1" stroke-opacity="0.4"/>
+                <line x1="20" y1="18" x2="20" y2="46" stroke="#c9a84c" stroke-width="1" stroke-opacity="0.7"/>
+                <line x1="28" y1="14" x2="28" y2="46" stroke="#c9a84c" stroke-width="1" stroke-opacity="0.7"/>
+                <line x1="36" y1="18" x2="36" y2="46" stroke="#c9a84c" stroke-width="1" stroke-opacity="0.7"/>
+                <line x1="44" y1="14" x2="44" y2="46" stroke="#c9a84c" stroke-width="1" stroke-opacity="0.7"/>
+                <polygon points="32,6 38,16 26,16" fill="none" stroke="#c9a84c" stroke-width="1" stroke-opacity="0.8"/>
               </svg>
+              <p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#e8d5a3;">Artisan at work, Jaipur</p>
+              <span style="font-size:0.7rem;color:#c9a84c;letter-spacing:0.18em;text-transform:uppercase;margin-top:0.3rem;">Rajasthan, 2024</span>
             </div>
-            <p class="artisan-card-label">Artisan at work, Jaipur</p>
-            <p class="artisan-card-sublabel">Rajasthan, 2024</p>
+            <div class="photo-card-caption">
+              <p>Artisan at work, Jaipur</p>
+              <span>Rajasthan · 2024</span>
+            </div>
           </div>
         </div>
       </div>
@@ -1013,6 +1362,49 @@
 
       </div>
 
+      <!-- Material photo strip -->
+      <div class="material-strip fade-in fade-in-delay-2">
+        <!-- Aluminum / metalwork -->
+        <div class="material-photo">
+          <img
+            src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=80"
+            alt="Aircraft-grade aluminum sheet, Pune"
+            loading="lazy"
+            onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(145deg,#1a1f2e,#0d1018)';"
+          />
+          <div class="material-photo-label">
+            <p>Aircraft-grade Aluminum</p>
+            <span>Fabricated in Pune</span>
+          </div>
+        </div>
+        <!-- Silk / embroidery -->
+        <div class="material-photo">
+          <img
+            src="https://images.unsplash.com/photo-1596720426673-e4e14290f0cc?auto=format&fit=crop&w=600&q=80"
+            alt="Banarasi silk hand-embroidery, Varanasi"
+            loading="lazy"
+            onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(145deg,#1a1823,#0d0e18)';"
+          />
+          <div class="material-photo-label">
+            <p>Hand-embroidered Banarasi Silk</p>
+            <span>Stitched in Varanasi</span>
+          </div>
+        </div>
+        <!-- Leather -->
+        <div class="material-photo">
+          <img
+            src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=600&q=80"
+            alt="Full-grain vegetable-tanned leather, Kanpur"
+            loading="lazy"
+            onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(145deg,#1e1810,#100d08)';"
+          />
+          <div class="material-photo-label">
+            <p>Full-grain Kanpur Leather</p>
+            <span>Tanned &amp; Finished in Kanpur</span>
+          </div>
+        </div>
+      </div>
+
       <div class="made-in-india-banner fade-in fade-in-delay-2">
         <p>"Tijorii is entirely manufactured in India — from raw aluminum sheets cut in Pune to final embroidery stitched in Varanasi."</p>
       </div>
@@ -1041,45 +1433,146 @@
   <!-- ─── PRICING ──────────────────────────────────────────── -->
   <section id="pricing">
     <div class="section-inner">
-      <div class="pricing-center">
-        <p class="section-label fade-in">Pre-Order</p>
-        <h2 class="section-headline fade-in fade-in-delay-1" style="text-align:center;">Reserve Yours</h2>
-        <p class="section-subheadline fade-in fade-in-delay-2" style="max-width:100%;text-align:center;">Tijorii launches with a single cabin-size offering. Pre-orders are limited.</p>
+      <p class="section-label fade-in">Pre-Order</p>
+      <h2 class="section-headline fade-in fade-in-delay-1">Reserve Yours</h2>
+      <p class="section-subheadline fade-in fade-in-delay-2">Tijorii launches with a single cabin-size offering. Pre-orders are limited.</p>
 
-        <div class="pricing-card fade-in fade-in-delay-2">
-          <span class="early-badge">First 200 units — Save ₹6,000</span>
-          <p class="pricing-product">Tijorii Cabin — 20"</p>
-          <p class="pricing-dims">20" × 14" × 9" &nbsp;|&nbsp; 2.8 kg</p>
-          <div class="pricing-amount">
-            <span class="price-main">₹28,000</span>
-            <span class="price-retail">₹34,000 retail after launch</span>
+      <div class="pricing-layout">
+        <!-- Left: suitcase illustration + spec sheet -->
+        <div class="pricing-suitcase fade-in fade-in-delay-2">
+          <svg viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg" aria-label="Tijorii Cabin 20 inch suitcase">
+            <defs>
+              <linearGradient id="pBodyGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%"   stop-color="#1c2032"/>
+                <stop offset="25%"  stop-color="#262d42"/>
+                <stop offset="55%"  stop-color="#2e3650"/>
+                <stop offset="78%"  stop-color="#232a3d"/>
+                <stop offset="100%" stop-color="#181d2c"/>
+              </linearGradient>
+              <linearGradient id="pSideGrad"   x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#0c0f19"/><stop offset="100%" stop-color="#141826"/></linearGradient>
+              <linearGradient id="pTopGrad"    x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#2a3045"/><stop offset="100%" stop-color="#1a1f30"/></linearGradient>
+              <linearGradient id="pLeatherGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#9b6530"/><stop offset="100%" stop-color="#5c3a18"/></linearGradient>
+              <linearGradient id="pLockGrad"   x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#dbb96a"/><stop offset="100%" stop-color="#a07a30"/></linearGradient>
+              <linearGradient id="pWheelGrad"  x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#1a1e2c"/><stop offset="100%" stop-color="#0d1018"/></linearGradient>
+              <pattern id="pBrush" x="0" y="0" width="400" height="3" patternUnits="userSpaceOnUse">
+                <line x1="0" y1="1" x2="400" y2="1" stroke="rgba(255,255,255,0.022)" stroke-width="0.6"/>
+                <line x1="0" y1="2.5" x2="400" y2="2.5" stroke="rgba(0,0,0,0.04)" stroke-width="0.4"/>
+              </pattern>
+            </defs>
+            <ellipse cx="200" cy="508" rx="145" ry="10" fill="rgba(0,0,0,0.45)"/>
+            <path d="M62,82 L338,82 L378,62 L102,62 Z" fill="url(#pTopGrad)"/>
+            <path d="M338,82 L378,62 L378,448 L338,468 Z" fill="url(#pSideGrad)"/>
+            <line x1="378" y1="255" x2="338" y2="275" stroke="rgba(201,168,76,0.35)" stroke-width="1.2"/>
+            <rect x="62" y="82" width="276" height="386" rx="7" fill="url(#pBodyGrad)"/>
+            <rect x="62" y="82" width="276" height="386" rx="7" fill="url(#pBrush)"/>
+            <rect x="62" y="82" width="10" height="386" rx="5" fill="rgba(255,255,255,0.04)"/>
+            <rect x="326" y="82" width="12" height="386" rx="5" fill="rgba(0,0,0,0.12)"/>
+            <rect x="76" y="96" width="248" height="358" rx="4" fill="none" stroke="rgba(201,168,76,0.1)" stroke-width="1"/>
+            <path d="M62,82 L108,82 L62,128 Z"   fill="url(#pLeatherGrad)" opacity="0.9"/>
+            <path d="M338,82 L292,82 L338,128 Z"  fill="url(#pLeatherGrad)" opacity="0.9"/>
+            <path d="M62,468 L108,468 L62,422 Z"  fill="url(#pLeatherGrad)" opacity="0.9"/>
+            <path d="M338,468 L292,468 L338,422 Z" fill="url(#pLeatherGrad)" opacity="0.9"/>
+            <path d="M62,82 L108,82" stroke="rgba(201,168,76,0.4)" stroke-width="0.7"/>
+            <path d="M62,82 L62,128" stroke="rgba(201,168,76,0.4)" stroke-width="0.7"/>
+            <path d="M292,82 L338,82" stroke="rgba(201,168,76,0.4)" stroke-width="0.7"/>
+            <path d="M338,82 L338,128" stroke="rgba(201,168,76,0.4)" stroke-width="0.7"/>
+            <path d="M62,468 L108,468" stroke="rgba(201,168,76,0.4)" stroke-width="0.7"/>
+            <path d="M62,422 L62,468" stroke="rgba(201,168,76,0.4)" stroke-width="0.7"/>
+            <path d="M292,468 L338,468" stroke="rgba(201,168,76,0.4)" stroke-width="0.7"/>
+            <path d="M338,422 L338,468" stroke="rgba(201,168,76,0.4)" stroke-width="0.7"/>
+            <rect x="163" y="68" width="8" height="18" rx="2" fill="#1a1f2e" stroke="rgba(201,168,76,0.4)" stroke-width="0.8"/>
+            <rect x="229" y="68" width="8" height="18" rx="2" fill="#1a1f2e" stroke="rgba(201,168,76,0.4)" stroke-width="0.8"/>
+            <rect x="155" y="36" width="90" height="30" rx="15" fill="none" stroke="url(#pLockGrad)" stroke-width="2.2"/>
+            <rect x="164" y="36" width="72" height="30" rx="12" fill="rgba(10,14,26,0.85)"/>
+            <rect x="172" y="44" width="56" height="14" rx="4" fill="rgba(201,168,76,0.07)" stroke="rgba(201,168,76,0.15)" stroke-width="0.7"/>
+            <rect x="62" y="274" width="276" height="2.5" fill="url(#pLockGrad)" opacity="0.75"/>
+            <rect x="62" y="276.5" width="276" height="1.5" fill="rgba(0,0,0,0.5)"/>
+            <circle cx="92"  cy="275.5" r="2.2" fill="url(#pLockGrad)" opacity="0.7"/>
+            <circle cx="147" cy="275.5" r="2.2" fill="url(#pLockGrad)" opacity="0.7"/>
+            <circle cx="253" cy="275.5" r="2.2" fill="url(#pLockGrad)" opacity="0.7"/>
+            <circle cx="308" cy="275.5" r="2.2" fill="url(#pLockGrad)" opacity="0.7"/>
+            <rect x="178" y="260" width="44" height="32" rx="4" fill="url(#pLockGrad)"/>
+            <rect x="181" y="263" width="38" height="26" rx="3" fill="#12161f"/>
+            <rect x="184" y="266" width="8" height="6" rx="1.5" fill="#1e2435" stroke="rgba(201,168,76,0.5)" stroke-width="0.7"/>
+            <rect x="196" y="266" width="8" height="6" rx="1.5" fill="#1e2435" stroke="rgba(201,168,76,0.5)" stroke-width="0.7"/>
+            <rect x="208" y="266" width="8" height="6" rx="1.5" fill="#1e2435" stroke="rgba(201,168,76,0.5)" stroke-width="0.7"/>
+            <text x="188" y="272" font-size="4" fill="rgba(201,168,76,0.7)" font-family="Inter" text-anchor="middle">8</text>
+            <text x="200" y="272" font-size="4" fill="rgba(201,168,76,0.7)" font-family="Inter" text-anchor="middle">3</text>
+            <text x="212" y="272" font-size="4" fill="rgba(201,168,76,0.7)" font-family="Inter" text-anchor="middle">1</text>
+            <text x="200" y="283" font-size="4.5" fill="rgba(201,168,76,0.6)" font-family="Inter" text-anchor="middle" letter-spacing="1.5">TSA</text>
+            <polygon points="200,162 212,175 200,188 188,175" fill="none" stroke="rgba(201,168,76,0.18)" stroke-width="1"/>
+            <circle cx="200" cy="175" r="2" fill="rgba(201,168,76,0.25)"/>
+            <text x="200" y="214" font-size="11" font-family="Raleway,sans-serif" font-weight="200" letter-spacing="7" fill="rgba(201,168,76,0.28)" text-anchor="middle">TIJORII</text>
+            <text x="200" y="228" font-size="5.5" font-family="Inter,sans-serif" font-weight="300" letter-spacing="3.5" fill="rgba(201,168,76,0.18)" text-anchor="middle">MADE IN INDIA</text>
+            <path d="M352,250 Q378,244 378,262 Q378,280 352,274" fill="none" stroke="url(#pLockGrad)" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="80"  cy="84" r="2.5" fill="rgba(201,168,76,0.45)"/>
+            <circle cx="320" cy="84" r="2.5" fill="rgba(201,168,76,0.45)"/>
+            <circle cx="64"  cy="175" r="2"   fill="rgba(201,168,76,0.3)"/>
+            <circle cx="64"  cy="370" r="2"   fill="rgba(201,168,76,0.3)"/>
+            <circle cx="336" cy="175" r="2"   fill="rgba(201,168,76,0.3)"/>
+            <circle cx="336" cy="370" r="2"   fill="rgba(201,168,76,0.3)"/>
+            <rect x="78"  y="466" width="36" height="24" rx="12" fill="url(#pWheelGrad)"/>
+            <rect x="82"  y="470" width="28" height="16" rx="8"  fill="#0a0d14"/>
+            <circle cx="96"  cy="478" r="5" fill="#0a0d14"/>
+            <circle cx="96"  cy="478" r="2" fill="#1a1e28"/>
+            <rect x="286" y="466" width="36" height="24" rx="12" fill="url(#pWheelGrad)"/>
+            <rect x="290" y="470" width="28" height="16" rx="8"  fill="#0a0d14"/>
+            <circle cx="304" cy="478" r="5" fill="#0a0d14"/>
+            <circle cx="304" cy="478" r="2" fill="#1a1e28"/>
+            <rect x="85"  y="464" width="22" height="4" rx="2" fill="rgba(201,168,76,0.25)"/>
+            <rect x="293" y="464" width="22" height="4" rx="2" fill="rgba(201,168,76,0.25)"/>
+          </svg>
+
+          <div class="suitcase-specs">
+            <div class="suitcase-spec-row"><span class="label">Model</span><span class="value">Tijorii Cabin</span></div>
+            <div class="suitcase-spec-row"><span class="label">Size</span><span class="value">20" Cabin</span></div>
+            <div class="suitcase-spec-row"><span class="label">Dimensions</span><span class="value">20" × 14" × 9"</span></div>
+            <div class="suitcase-spec-row"><span class="label">Weight</span><span class="value">2.8 kg</span></div>
+            <div class="suitcase-spec-row"><span class="label">Shell</span><span class="value">3003-Series Aluminum</span></div>
+            <div class="suitcase-spec-row"><span class="label">Interior</span><span class="value">Banarasi Silk + Suede</span></div>
+            <div class="suitcase-spec-row"><span class="label">Lock</span><span class="value">Japanese TSA</span></div>
+            <div class="suitcase-spec-row"><span class="label">Wheels</span><span class="value">Japanese Spinner</span></div>
+            <div class="suitcase-spec-row"><span class="label">Made in</span><span class="value">India 🇮🇳</span></div>
           </div>
-          <ul class="features-list">
-            <li><span class="check-icon">✦</span> Aircraft-grade 3003 aluminum shell</li>
-            <li><span class="check-icon">✦</span> Banarasi silk hand-embroidered interior</li>
-            <li><span class="check-icon">✦</span> Full-grain Kanpur leather corner trim</li>
-            <li><span class="check-icon">✦</span> Japanese TSA-approved lock</li>
-            <li><span class="check-icon">✦</span> Silent Japanese spinner wheels</li>
-            <li><span class="check-icon">✦</span> Handcrafted in India. Entirely.</li>
-          </ul>
         </div>
 
-        <form class="email-form fade-in fade-in-delay-3" id="notifyForm">
-          <input
-            type="email"
-            class="email-input"
-            id="emailInput"
-            placeholder="Enter your email to reserve your spot"
-            required
-          />
-          <button type="submit" class="btn-primary" style="width:100%;font-size:0.82rem;">
-            Notify Me When Pre-orders Open
-          </button>
-        </form>
-        <div class="thank-you" id="thankYou">
-          Thank you. We'll be in touch when pre-orders open.
+        <!-- Right: pricing card + form -->
+        <div>
+          <div class="pricing-card fade-in fade-in-delay-2">
+            <span class="early-badge">First 200 units — Save ₹6,000</span>
+            <p class="pricing-product">Tijorii Cabin — 20"</p>
+            <p class="pricing-dims">20" × 14" × 9" &nbsp;|&nbsp; 2.8 kg</p>
+            <div class="pricing-amount">
+              <span class="price-main">₹28,000</span>
+              <span class="price-retail">₹34,000 retail after launch</span>
+            </div>
+            <ul class="features-list">
+              <li><span class="check-icon">✦</span> Aircraft-grade 3003 aluminum shell</li>
+              <li><span class="check-icon">✦</span> Banarasi silk hand-embroidered interior</li>
+              <li><span class="check-icon">✦</span> Full-grain Kanpur leather corner trim</li>
+              <li><span class="check-icon">✦</span> Japanese TSA-approved lock</li>
+              <li><span class="check-icon">✦</span> Silent Japanese spinner wheels</li>
+              <li><span class="check-icon">✦</span> Handcrafted in India. Entirely.</li>
+            </ul>
+          </div>
+
+          <form class="email-form fade-in fade-in-delay-3" id="notifyForm">
+            <input
+              type="email"
+              class="email-input"
+              id="emailInput"
+              placeholder="Enter your email to reserve your spot"
+              required
+            />
+            <button type="submit" class="btn-primary" style="width:100%;font-size:0.82rem;">
+              Notify Me When Pre-orders Open
+            </button>
+          </form>
+          <div class="thank-you" id="thankYou">
+            Thank you. We'll be in touch when pre-orders open.
+          </div>
+          <p class="trust-line fade-in fade-in-delay-4">No payment required now. We'll reach out when we're ready.</p>
         </div>
-        <p class="trust-line fade-in fade-in-delay-4">No payment required now. We'll reach out when we're ready.</p>
       </div>
     </div>
   </section>
