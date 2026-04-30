@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tijorii — Crafted in India. Built to Last a Lifetime.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0a0e1a;
+      --nearblack: #06080f;
+      --gold: #c9a84c;
+      --champagne: #e8d5a3;
+      --offwhite: #f5f0e8;
+      --white: #ffffff;
+      --gold-dim: rgba(201,168,76,0.15);
+      --gold-border: rgba(201,168,76,0.4);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--nearblack);
+      color: var(--offwhite);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.15;
+    }
+
+    /* ─── NAVBAR ─────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(6,8,15,0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--gold-border);
+      padding: 0 5%;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.12em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--offwhite);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: var(--gold);
+      transition: 0.3s;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 68px; left: 0; right: 0;
+      background: rgba(6,8,15,0.97);
+      padding: 2rem 5%;
+      border-bottom: 1px solid var(--gold-border);
+      z-index: 99;
+    }
+
+    .mobile-menu.open { display: block; }
+
+    .mobile-menu a {
+      display: block;
+      color: var(--offwhite);
+      text-decoration: none;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid rgba(201,168,76,0.1);
+      transition: color 0.3s;
+    }
+
+    .mobile-menu a:hover { color: var(--gold); }
+
+    /* ─── RAJASTHANI SVG DIVIDER ────────────────────────── */
+    .raj-divider {
+      width: 100%;
+      height: 44px;
+      display: block;
+      overflow: hidden;
+    }
+
+    /* ─── GOLD RULE WITH DIAMOND ────────────────────────── */
+    .gold-rule {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      width: 100%;
+      margin: 0;
+    }
+
+    .gold-rule::before,
+    .gold-rule::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-border), transparent);
+    }
+
+    .gold-rule-diamond {
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      margin: 0 16px;
+      flex-shrink: 0;
+    }
+
+    /* ─── FADE-IN ANIMATION ─────────────────────────────── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .fade-in-delay-1 { transition-delay: 0.1s; }
+    .fade-in-delay-2 { transition-delay: 0.2s; }
+    .fade-in-delay-3 { transition-delay: 0.3s; }
+    .fade-in-delay-4 { transition-delay: 0.4s; }
+    .fade-in-delay-5 { transition-delay: 0.5s; }
+    .fade-in-delay-6 { transition-delay: 0.6s; }
+
+    /* ─── HERO ──────────────────────────────────────────── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 5% 0;
+      overflow: hidden;
+      background: radial-gradient(ellipse 70% 55% at 50% 50%, rgba(201,168,76,0.09) 0%, transparent 70%),
+                  linear-gradient(180deg, var(--navy) 0%, var(--nearblack) 100%);
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -55%);
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+    }
+
+    .hero-headline {
+      font-size: clamp(2.8rem, 6.5vw, 5.5rem);
+      font-weight: 600;
+      color: var(--white);
+      max-width: 880px;
+      margin: 0 auto 1.5rem;
+      background: linear-gradient(135deg, #ffffff 30%, var(--champagne) 60%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 4s ease-in-out infinite;
+      background-size: 200% 200%;
+    }
+
+    @keyframes shimmer {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 1.6vw, 1.18rem);
+      color: var(--offwhite);
+      max-width: 640px;
+      margin: 0 auto 2.8rem;
+      opacity: 0.85;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1.2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 0;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--nearblack);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 1rem 2.2rem;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background: var(--champagne);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(201,168,76,0.3);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--gold);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 1rem 2.2rem;
+      border: 1px solid var(--gold-border);
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.2s, border-color 0.3s;
+      display: inline-block;
+    }
+
+    .btn-outline:hover {
+      background: var(--gold-dim);
+      border-color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    /* Hero bottom border */
+    .hero-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    /* ─── SECTION WRAPPER ───────────────────────────────── */
+    section {
+      padding: 100px 5%;
+    }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .section-headline {
+      font-size: clamp(2.2rem, 4vw, 3.6rem);
+      margin-bottom: 1rem;
+    }
+
+    .section-subheadline {
+      font-size: clamp(1rem, 1.4vw, 1.12rem);
+      color: var(--offwhite);
+      opacity: 0.75;
+      max-width: 580px;
+      margin-bottom: 3.5rem;
+      line-height: 1.8;
+    }
+
+    /* ─── OUR STORY ─────────────────────────────────────── */
+    #our-story {
+      background: var(--navy);
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .story-text p {
+      margin-bottom: 1.4rem;
+      font-size: 1.02rem;
+      opacity: 0.88;
+      line-height: 1.85;
+    }
+
+    .pull-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-style: italic;
+      color: var(--gold);
+      line-height: 1.4;
+      margin: 2.2rem 0;
+      padding-left: 1.5rem;
+      border-left: 2px solid var(--gold-border);
+    }
+
+    .artisan-card {
+      border: 1px solid var(--gold-border);
+      background: linear-gradient(145deg, rgba(201,168,76,0.04), rgba(10,14,26,0.8));
+      aspect-ratio: 3/4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .artisan-card::before {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border: 1px solid rgba(201,168,76,0.15);
+      pointer-events: none;
+    }
+
+    .artisan-card-icon {
+      margin-bottom: 1.5rem;
+      opacity: 0.6;
+    }
+
+    .artisan-card-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--champagne);
+      letter-spacing: 0.05em;
+    }
+
+    .artisan-card-sublabel {
+      font-size: 0.75rem;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-top: 0.4rem;
+    }
+
+    /* ─── CRAFTSMANSHIP ─────────────────────────────────── */
+    #craftsmanship {
+      background: var(--nearblack);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      margin-bottom: 2rem;
+    }
+
+    .feature-card {
+      background: rgba(10,14,26,0.7);
+      border: 1px solid rgba(201,168,76,0.12);
+      padding: 2.5rem 2rem;
+      transition: transform 0.3s ease, border-color 0.3s, box-shadow 0.3s;
+      cursor: default;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--gold-border);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(201,168,76,0.1);
+    }
+
+    .feature-icon {
+      margin-bottom: 1.4rem;
+    }
+
+    .feature-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+
+    .feature-desc {
+      font-size: 0.9rem;
+      line-height: 1.75;
+      opacity: 0.75;
+    }
+
+    .made-in-india-banner {
+      border: 1px solid var(--gold-border);
+      background: linear-gradient(135deg, rgba(201,168,76,0.05), rgba(10,14,26,0.9));
+      padding: 2.5rem 3rem;
+      text-align: center;
+      margin-top: 2.5rem;
+    }
+
+    .made-in-india-banner p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      font-style: italic;
+      color: var(--champagne);
+      line-height: 1.5;
+    }
+
+    /* ─── PRICING ───────────────────────────────────────── */
+    #pricing {
+      background: var(--navy);
+    }
+
+    .pricing-center {
+      max-width: 580px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .pricing-card {
+      border: 1px solid var(--gold-border);
+      background: linear-gradient(145deg, rgba(201,168,76,0.06), rgba(6,8,15,0.95));
+      padding: 3rem 2.5rem;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pricing-card::before {
+      content: '';
+      position: absolute;
+      inset: 6px;
+      border: 1px solid rgba(201,168,76,0.1);
+      pointer-events: none;
+    }
+
+    .early-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--nearblack);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .pricing-product {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+
+    .pricing-dims {
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    .pricing-amount {
+      margin-bottom: 2rem;
+    }
+
+    .price-main {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 600;
+      color: var(--gold);
+      display: block;
+      line-height: 1;
+    }
+
+    .price-retail {
+      font-size: 0.85rem;
+      color: var(--offwhite);
+      opacity: 0.5;
+      text-decoration: line-through;
+      margin-top: 0.3rem;
+      display: block;
+    }
+
+    .features-list {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 0;
+    }
+
+    .features-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(201,168,76,0.08);
+      font-size: 0.92rem;
+      opacity: 0.9;
+    }
+
+    .features-list li:last-child { border-bottom: none; }
+
+    .check-icon {
+      color: var(--gold);
+      font-size: 1rem;
+      margin-top: 1px;
+      flex-shrink: 0;
+    }
+
+    .email-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .email-input {
+      background: rgba(10,14,26,0.8);
+      border: 1px solid var(--gold-border);
+      color: var(--offwhite);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      padding: 1rem 1.4rem;
+      outline: none;
+      width: 100%;
+      transition: border-color 0.3s;
+    }
+
+    .email-input::placeholder { color: rgba(245,240,232,0.35); }
+    .email-input:focus { border-color: var(--gold); }
+
+    .trust-line {
+      font-size: 0.78rem;
+      color: var(--offwhite);
+      opacity: 0.45;
+      letter-spacing: 0.03em;
+    }
+
+    .thank-you {
+      display: none;
+      background: rgba(201,168,76,0.08);
+      border: 1px solid var(--gold-border);
+      color: var(--champagne);
+      padding: 1rem 1.5rem;
+      font-size: 0.92rem;
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+
+    /* ─── WHY TIJORII ───────────────────────────────────── */
+    #why-tijorii {
+      background: var(--nearblack);
+    }
+
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-bottom: 4rem;
+    }
+
+    .comparison-col {
+      padding: 2.5rem 2rem;
+    }
+
+    .comparison-col.others {
+      background: rgba(120,30,30,0.08);
+      border: 1px solid rgba(180,60,60,0.15);
+    }
+
+    .comparison-col.tijorii {
+      background: rgba(201,168,76,0.05);
+      border: 1px solid var(--gold-border);
+    }
+
+    .comparison-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      margin-bottom: 1.8rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+
+    .comparison-col.others .comparison-heading { color: rgba(245,240,232,0.45); }
+    .comparison-col.tijorii .comparison-heading { color: var(--gold); }
+
+    .comparison-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .comparison-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.93rem;
+      line-height: 1.5;
+    }
+
+    .comparison-col.others .comparison-list li { opacity: 0.5; }
+    .comparison-col.tijorii .comparison-list li { opacity: 0.9; }
+
+    .x-icon { color: rgba(200,80,80,0.7); flex-shrink: 0; }
+    .check-gold { color: var(--gold); flex-shrink: 0; }
+
+    .closing-block {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 3.5rem 2rem;
+      border: 1px solid rgba(201,168,76,0.12);
+      background: rgba(10,14,26,0.5);
+    }
+
+    .closing-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-style: italic;
+      color: var(--champagne);
+      margin-bottom: 1.2rem;
+    }
+
+    .closing-body {
+      font-size: 1rem;
+      opacity: 0.75;
+      line-height: 1.85;
+    }
+
+    /* ─── FOOTER ────────────────────────────────────────── */
+    footer {
+      background: var(--navy);
+      padding: 0;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 5% 2.5rem;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-tagline {
+      font-size: 0.82rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--champagne);
+      opacity: 0.6;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      list-style: none;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-links a {
+      color: var(--offwhite);
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.5;
+      transition: opacity 0.3s, color 0.3s;
+    }
+
+    .footer-links a:hover { opacity: 1; color: var(--gold); }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      opacity: 0.3;
+      letter-spacing: 0.05em;
+    }
+
+    /* ─── RESPONSIVE ────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .story-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      .artisan-card {
+        aspect-ratio: 16/7;
+        max-width: 500px;
+      }
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      section { padding: 72px 5%; }
+      .features-grid { grid-template-columns: 1fr; }
+      .comparison-grid { grid-template-columns: 1fr; }
+      .comparison-col.others { border-bottom: none; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-ctas { flex-direction: column; align-items: center; }
+      .btn-primary, .btn-outline { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAV ─────────────────────────────────────────────── -->
+  <nav>
+    <a href="#hero" class="nav-logo">Tijorii</a>
+    <ul class="nav-links">
+      <li><a href="#our-story">Our Story</a></li>
+      <li><a href="#craftsmanship">Craftsmanship</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#why-tijorii">Why Tijorii</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#our-story">Our Story</a>
+    <a href="#craftsmanship">Craftsmanship</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#why-tijorii">Why Tijorii</a>
+  </div>
+
+  <!-- ─── HERO ─────────────────────────────────────────────── -->
+  <section id="hero">
+    <div class="hero-glow"></div>
+    <p class="hero-eyebrow fade-in">Mumbai · Jaipur · Varanasi · Pune</p>
+    <h1 class="hero-headline fade-in fade-in-delay-1">
+      Crafted in India.<br />Built to Last a Lifetime.
+    </h1>
+    <p class="hero-sub fade-in fade-in-delay-2">
+      Tijorii reimagines the aluminum suitcase — forged from aircraft-grade aluminum, lined by the hands of Indian artisans in silk, leather, and hand-embroidered fabric.
+    </p>
+    <div class="hero-ctas fade-in fade-in-delay-3">
+      <a href="#our-story" class="btn-outline">Discover Our Story</a>
+      <a href="#pricing" class="btn-primary">Pre-order Now</a>
+    </div>
+
+    <!-- Hero bottom Rajasthani border -->
+    <div class="hero-bottom">
+      <svg class="raj-divider" viewBox="0 0 1200 44" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="rajHero" x="0" y="0" width="44" height="44" patternUnits="userSpaceOnUse">
+            <!-- Interlocking diamond grid motif -->
+            <rect width="44" height="44" fill="none"/>
+            <!-- Outer diamond -->
+            <polygon points="22,2 42,22 22,42 2,22" fill="none" stroke="#c9a84c" stroke-width="0.8" stroke-opacity="0.55"/>
+            <!-- Inner diamond -->
+            <polygon points="22,10 34,22 22,34 10,22" fill="none" stroke="#c9a84c" stroke-width="0.6" stroke-opacity="0.35"/>
+            <!-- Center dot -->
+            <circle cx="22" cy="22" r="2" fill="#c9a84c" fill-opacity="0.6"/>
+            <!-- Corner dots -->
+            <circle cx="2"  cy="22" r="1.2" fill="#c9a84c" fill-opacity="0.3"/>
+            <circle cx="42" cy="22" r="1.2" fill="#c9a84c" fill-opacity="0.3"/>
+            <circle cx="22" cy="2"  r="1.2" fill="#c9a84c" fill-opacity="0.3"/>
+            <circle cx="22" cy="42" r="1.2" fill="#c9a84c" fill-opacity="0.3"/>
+            <!-- Cross lines -->
+            <line x1="22" y1="2" x2="22" y2="10" stroke="#c9a84c" stroke-width="0.5" stroke-opacity="0.3"/>
+            <line x1="22" y1="34" x2="22" y2="42" stroke="#c9a84c" stroke-width="0.5" stroke-opacity="0.3"/>
+            <line x1="2"  y1="22" x2="10" y2="22" stroke="#c9a84c" stroke-width="0.5" stroke-opacity="0.3"/>
+            <line x1="34" y1="22" x2="42" y2="22" stroke="#c9a84c" stroke-width="0.5" stroke-opacity="0.3"/>
+          </pattern>
+        </defs>
+        <rect width="1200" height="44" fill="url(#rajHero)"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ─── GOLD RULE ─────────────────────────────────────────── -->
+  <div class="gold-rule" style="padding: 0 5%;"><div class="gold-rule-diamond"></div></div>
+
+  <!-- ─── OUR STORY ────────────────────────────────────────── -->
+  <section id="our-story">
+    <div class="section-inner">
+      <p class="section-label fade-in">Our Story</p>
+      <h2 class="section-headline fade-in fade-in-delay-1">Born from a Belief That India Deserves Better</h2>
+      <div class="story-grid">
+        <div class="story-text">
+          <p class="fade-in fade-in-delay-2">
+            For years, buying a premium suitcase in India meant one thing: paying an Indian price for a Chinese product. Every major luggage brand you'd see at airports — the ones with glossy packaging and confident "Made in India" marketing — were quietly assembling their products in factories in Guangzhou and Shenzhen. The shell, the wheels, the locks, the lining: all sourced from the same suppliers that make a hundred other forgettable bags. We found that unacceptable.
+          </p>
+          <p class="fade-in fade-in-delay-2">
+            Tijorii began with a single question: what would an Indian suitcase look like if we actually made it in India — not as a cost-saving compromise, but as a statement of craft? The founder spent two years visiting workshops in Pune's metalworking districts, meeting aluminium fabricators who had supplied parts for aerospace and defence projects. What they could do with a sheet of 3003-series aluminium was extraordinary. The shells came alive.
+          </p>
+          <p class="fade-in fade-in-delay-3">
+            The interior was the harder problem. Polyester was not an option. A chance visit to a leatherworking cooperative in Jaipur led to an unexpected discovery: families of artisans who had spent generations crafting embroidered leather goods for royal households — their skills entirely intact, their livelihoods precarious. The block-print workshops of Sanganer. The silk looms of Varanasi. The vegetable-tannery lanes of Kanpur. India had everything. It had always had everything.
+          </p>
+          <p class="fade-in fade-in-delay-3">
+            Tijorii is the meeting point of aerospace-grade precision and centuries-old Indian craftsmanship. Every suitcase is a collaboration across three cities. Every interior is stitched by hand. No two are identical. That is not a limitation — that is the point.
+          </p>
+
+          <blockquote class="pull-quote fade-in fade-in-delay-4">
+            "Every Tijorii is a piece of India you carry with you."
+          </blockquote>
+        </div>
+
+        <div class="fade-in fade-in-delay-3">
+          <div class="artisan-card">
+            <div class="artisan-card-icon">
+              <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Stylised hands at loom motif -->
+                <rect x="12" y="28" width="40" height="2" stroke="#c9a84c" stroke-width="1" stroke-opacity="0.5"/>
+                <rect x="12" y="34" width="40" height="2" stroke="#c9a84c" stroke-width="1" stroke-opacity="0.5"/>
+                <rect x="12" y="40" width="40" height="2" stroke="#c9a84c" stroke-width="1" stroke-opacity="0.5"/>
+                <line x1="20" y1="22" x2="20" y2="46" stroke="#c9a84c" stroke-width="1" stroke-opacity="0.6"/>
+                <line x1="28" y1="18" x2="28" y2="46" stroke="#c9a84c" stroke-width="1" stroke-opacity="0.6"/>
+                <line x1="36" y1="22" x2="36" y2="46" stroke="#c9a84c" stroke-width="1" stroke-opacity="0.6"/>
+                <line x1="44" y1="18" x2="44" y2="46" stroke="#c9a84c" stroke-width="1" stroke-opacity="0.6"/>
+                <polygon points="32,8 38,18 26,18" fill="none" stroke="#c9a84c" stroke-width="1" stroke-opacity="0.7"/>
+                <circle cx="32" cy="8" r="2" fill="#c9a84c" fill-opacity="0.7"/>
+              </svg>
+            </div>
+            <p class="artisan-card-label">Artisan at work, Jaipur</p>
+            <p class="artisan-card-sublabel">Rajasthan, 2024</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── GOLD RULE ─────────────────────────────────────────── -->
+  <div style="padding: 0 5%;">
+    <svg class="raj-divider" viewBox="0 0 1200 44" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="rajMid1" x="0" y="0" width="44" height="44" patternUnits="userSpaceOnUse">
+          <polygon points="22,2 42,22 22,42 2,22" fill="none" stroke="#c9a84c" stroke-width="0.8" stroke-opacity="0.45"/>
+          <polygon points="22,10 34,22 22,34 10,22" fill="none" stroke="#c9a84c" stroke-width="0.6" stroke-opacity="0.25"/>
+          <circle cx="22" cy="22" r="2" fill="#c9a84c" fill-opacity="0.5"/>
+          <circle cx="2"  cy="22" r="1.2" fill="#c9a84c" fill-opacity="0.25"/>
+          <circle cx="42" cy="22" r="1.2" fill="#c9a84c" fill-opacity="0.25"/>
+          <circle cx="22" cy="2"  r="1.2" fill="#c9a84c" fill-opacity="0.25"/>
+          <circle cx="22" cy="42" r="1.2" fill="#c9a84c" fill-opacity="0.25"/>
+        </pattern>
+      </defs>
+      <rect width="1200" height="44" fill="url(#rajMid1)"/>
+    </svg>
+  </div>
+  <div class="gold-rule" style="padding: 0 5%;"><div class="gold-rule-diamond"></div></div>
+
+  <!-- ─── CRAFTSMANSHIP ────────────────────────────────────── -->
+  <section id="craftsmanship">
+    <div class="section-inner">
+      <p class="section-label fade-in">Craftsmanship &amp; Build Quality</p>
+      <h2 class="section-headline fade-in fade-in-delay-1">Every Detail, Considered</h2>
+      <p class="section-subheadline fade-in fade-in-delay-2">From the aluminum shell to the final stitch — nothing is outsourced, nothing is rushed.</p>
+
+      <div class="features-grid">
+
+        <!-- Card 1 -->
+        <div class="feature-card fade-in fade-in-delay-1">
+          <div class="feature-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="20,2 37,11 37,29 20,38 3,29 3,11" fill="none" stroke="#c9a84c" stroke-width="1.2"/>
+              <polygon points="20,8 31,14 31,26 20,32 9,26 9,14" fill="none" stroke="#c9a84c" stroke-width="0.7" stroke-opacity="0.5"/>
+              <circle cx="20" cy="20" r="3" fill="#c9a84c" fill-opacity="0.7"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Aerospace-Grade Aluminum Shell</h3>
+          <p class="feature-desc">Our shells are precision-pressed from 3003-series aluminum alloy — the same grade used in aerospace panels. Lightweight yet extraordinarily strong, each shell is brushed and anodized for a satin finish that resists scratches, dents, and the chaos of modern travel.</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="feature-card fade-in fade-in-delay-2">
+          <div class="feature-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="18" width="20" height="16" rx="1" stroke="#c9a84c" stroke-width="1.2"/>
+              <path d="M14 18V13a6 6 0 0 1 12 0v5" stroke="#c9a84c" stroke-width="1.2" fill="none"/>
+              <circle cx="20" cy="26" r="2.5" fill="#c9a84c" fill-opacity="0.7"/>
+              <line x1="20" y1="28" x2="20" y2="31" stroke="#c9a84c" stroke-width="1.2"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Japanese TSA-Approved Lock System</h3>
+          <p class="feature-desc">Each Tijorii is fitted with a dual-frame aluminum locking system paired with a Japanese TSA-approved combination lock. The frame closes with a satisfying click — flush, secure, and tamper-resistant.</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="feature-card fade-in fade-in-delay-3">
+          <div class="feature-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="20" cy="20" r="12" stroke="#c9a84c" stroke-width="1.2"/>
+              <circle cx="20" cy="20" r="5" stroke="#c9a84c" stroke-width="0.8" stroke-opacity="0.5"/>
+              <path d="M20 8 A12 12 0 0 1 32 20" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round"/>
+              <polygon points="32,16 36,20 32,24" fill="#c9a84c" fill-opacity="0.8"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Silent Japanese Spinner Wheels</h3>
+          <p class="feature-desc">Our 360° multi-directional spinner wheels use Japanese-engineered bearings for near-silent glide on any surface. The wheel housing is aluminum-reinforced, not plastic.</p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="feature-card fade-in fade-in-delay-1">
+          <div class="feature-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 14 Q20 8 34 14" stroke="#c9a84c" stroke-width="1.2" fill="none"/>
+              <path d="M6 20 Q20 14 34 20" stroke="#c9a84c" stroke-width="1.2" fill="none"/>
+              <path d="M6 26 Q20 20 34 26" stroke="#c9a84c" stroke-width="1.2" fill="none"/>
+              <path d="M6 32 Q20 26 34 32" stroke="#c9a84c" stroke-width="1.2" fill="none"/>
+              <line x1="6" y1="8" x2="6" y2="34" stroke="#c9a84c" stroke-width="0.8" stroke-opacity="0.4"/>
+              <line x1="34" y1="8" x2="34" y2="34" stroke="#c9a84c" stroke-width="0.8" stroke-opacity="0.4"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Hand-Embroidered Silk Interior Lining</h3>
+          <p class="feature-desc">The interior is lined with Banarasi silk, hand-embroidered by artisans in Varanasi. Each panel features a unique block print motif — no two Tijoriis are identical.</p>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="feature-card fade-in fade-in-delay-2">
+          <div class="feature-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="20,4 36,20 20,36 4,20" fill="none" stroke="#c9a84c" stroke-width="1.2"/>
+              <polygon points="20,10 30,20 20,30 10,20" fill="none" stroke="#c9a84c" stroke-width="0.8" stroke-opacity="0.55"/>
+              <polygon points="20,16 24,20 20,24 16,20" fill="#c9a84c" fill-opacity="0.6"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Full-Grain Leather Corner Detailing</h3>
+          <p class="feature-desc">Full-grain vegetable-tanned leather sourced from Kanpur's tanneries reinforces the exterior corners and trim — adding both protection and an unmistakably Indian luxury character.</p>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="feature-card fade-in fade-in-delay-3">
+          <div class="feature-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="6" y="8"  width="28" height="6" rx="1" stroke="#c9a84c" stroke-width="1.1"/>
+              <rect x="6" y="17" width="28" height="6" rx="1" stroke="#c9a84c" stroke-width="1.1" stroke-opacity="0.65"/>
+              <rect x="6" y="26" width="28" height="6" rx="1" stroke="#c9a84c" stroke-width="1.1" stroke-opacity="0.35"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Hand-Stitched Suede Dividers &amp; Pockets</h3>
+          <p class="feature-desc">Interior pockets and compression dividers are crafted from Rajasthani suede — hand-stitched, hand-finished, and designed to cradle your belongings with the same care as a bespoke garment.</p>
+        </div>
+
+      </div>
+
+      <div class="made-in-india-banner fade-in fade-in-delay-2">
+        <p>"Tijorii is entirely manufactured in India — from raw aluminum sheets cut in Pune to final embroidery stitched in Varanasi."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── GOLD RULE ─────────────────────────────────────────── -->
+  <div style="padding: 0 5%;">
+    <svg class="raj-divider" viewBox="0 0 1200 44" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="rajMid2" x="0" y="0" width="44" height="44" patternUnits="userSpaceOnUse">
+          <polygon points="22,2 42,22 22,42 2,22" fill="none" stroke="#c9a84c" stroke-width="0.8" stroke-opacity="0.45"/>
+          <polygon points="22,10 34,22 22,34 10,22" fill="none" stroke="#c9a84c" stroke-width="0.6" stroke-opacity="0.25"/>
+          <circle cx="22" cy="22" r="2" fill="#c9a84c" fill-opacity="0.5"/>
+          <circle cx="2"  cy="22" r="1.2" fill="#c9a84c" fill-opacity="0.25"/>
+          <circle cx="42" cy="22" r="1.2" fill="#c9a84c" fill-opacity="0.25"/>
+          <circle cx="22" cy="2"  r="1.2" fill="#c9a84c" fill-opacity="0.25"/>
+          <circle cx="22" cy="42" r="1.2" fill="#c9a84c" fill-opacity="0.25"/>
+        </pattern>
+      </defs>
+      <rect width="1200" height="44" fill="url(#rajMid2)"/>
+    </svg>
+  </div>
+  <div class="gold-rule" style="padding: 0 5%;"><div class="gold-rule-diamond"></div></div>
+
+  <!-- ─── PRICING ──────────────────────────────────────────── -->
+  <section id="pricing">
+    <div class="section-inner">
+      <div class="pricing-center">
+        <p class="section-label fade-in">Pre-Order</p>
+        <h2 class="section-headline fade-in fade-in-delay-1" style="text-align:center;">Reserve Yours</h2>
+        <p class="section-subheadline fade-in fade-in-delay-2" style="max-width:100%;text-align:center;">Tijorii launches with a single cabin-size offering. Pre-orders are limited.</p>
+
+        <div class="pricing-card fade-in fade-in-delay-2">
+          <span class="early-badge">First 200 units — Save ₹6,000</span>
+          <p class="pricing-product">Tijorii Cabin — 20"</p>
+          <p class="pricing-dims">20" × 14" × 9" &nbsp;|&nbsp; 2.8 kg</p>
+          <div class="pricing-amount">
+            <span class="price-main">₹28,000</span>
+            <span class="price-retail">₹34,000 retail after launch</span>
+          </div>
+          <ul class="features-list">
+            <li><span class="check-icon">✦</span> Aircraft-grade 3003 aluminum shell</li>
+            <li><span class="check-icon">✦</span> Banarasi silk hand-embroidered interior</li>
+            <li><span class="check-icon">✦</span> Full-grain Kanpur leather corner trim</li>
+            <li><span class="check-icon">✦</span> Japanese TSA-approved lock</li>
+            <li><span class="check-icon">✦</span> Silent Japanese spinner wheels</li>
+            <li><span class="check-icon">✦</span> Handcrafted in India. Entirely.</li>
+          </ul>
+        </div>
+
+        <form class="email-form fade-in fade-in-delay-3" id="notifyForm">
+          <input
+            type="email"
+            class="email-input"
+            id="emailInput"
+            placeholder="Enter your email to reserve your spot"
+            required
+          />
+          <button type="submit" class="btn-primary" style="width:100%;font-size:0.82rem;">
+            Notify Me When Pre-orders Open
+          </button>
+        </form>
+        <div class="thank-you" id="thankYou">
+          Thank you. We'll be in touch when pre-orders open.
+        </div>
+        <p class="trust-line fade-in fade-in-delay-4">No payment required now. We'll reach out when we're ready.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── GOLD RULE ─────────────────────────────────────────── -->
+  <div style="padding: 0 5%;">
+    <svg class="raj-divider" viewBox="0 0 1200 44" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="rajMid3" x="0" y="0" width="44" height="44" patternUnits="userSpaceOnUse">
+          <polygon points="22,2 42,22 22,42 2,22" fill="none" stroke="#c9a84c" stroke-width="0.8" stroke-opacity="0.45"/>
+          <polygon points="22,10 34,22 22,34 10,22" fill="none" stroke="#c9a84c" stroke-width="0.6" stroke-opacity="0.25"/>
+          <circle cx="22" cy="22" r="2" fill="#c9a84c" fill-opacity="0.5"/>
+          <circle cx="2"  cy="22" r="1.2" fill="#c9a84c" fill-opacity="0.25"/>
+          <circle cx="42" cy="22" r="1.2" fill="#c9a84c" fill-opacity="0.25"/>
+          <circle cx="22" cy="2"  r="1.2" fill="#c9a84c" fill-opacity="0.25"/>
+          <circle cx="22" cy="42" r="1.2" fill="#c9a84c" fill-opacity="0.25"/>
+        </pattern>
+      </defs>
+      <rect width="1200" height="44" fill="url(#rajMid3)"/>
+    </svg>
+  </div>
+  <div class="gold-rule" style="padding: 0 5%;"><div class="gold-rule-diamond"></div></div>
+
+  <!-- ─── WHY TIJORII ──────────────────────────────────────── -->
+  <section id="why-tijorii">
+    <div class="section-inner">
+      <p class="section-label fade-in">Why Tijorii</p>
+      <h2 class="section-headline fade-in fade-in-delay-1">Not All Indian Suitcases Are Made in India</h2>
+      <p class="section-subheadline fade-in fade-in-delay-2">Most Indian luggage brands manufacture in China. We don't.</p>
+
+      <div class="comparison-grid fade-in fade-in-delay-2">
+        <div class="comparison-col others">
+          <h3 class="comparison-heading">The Others</h3>
+          <ul class="comparison-list">
+            <li><span class="x-icon">✕</span> Designed in India, assembled in China</li>
+            <li><span class="x-icon">✕</span> Generic ABS plastic or thin aluminum</li>
+            <li><span class="x-icon">✕</span> Mass-produced polyester linings</li>
+            <li><span class="x-icon">✕</span> No artisan involvement</li>
+            <li><span class="x-icon">✕</span> Lock and wheel systems from low-cost Chinese suppliers</li>
+            <li><span class="x-icon">✕</span> Indistinguishable interiors — every bag looks the same</li>
+          </ul>
+        </div>
+        <div class="comparison-col tijorii">
+          <h3 class="comparison-heading">Tijorii</h3>
+          <ul class="comparison-list">
+            <li><span class="check-gold">✦</span> Designed, forged, and finished in India</li>
+            <li><span class="check-gold">✦</span> Aircraft-grade 3003 aluminum alloy</li>
+            <li><span class="check-gold">✦</span> Hand-embroidered Banarasi silk and Rajasthani suede</li>
+            <li><span class="check-gold">✦</span> Every unit touched by Indian artisans</li>
+            <li><span class="check-gold">✦</span> Japanese-engineered lock and wheel systems</li>
+            <li><span class="check-gold">✦</span> Every interior is unique — no two are the same</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="closing-block fade-in fade-in-delay-3">
+        <h3 class="closing-headline">"We chose the harder path."</h3>
+        <p class="closing-body">
+          It would have been cheaper and faster to do what everyone else does — source from Guangzhou, slap an Indian name on it, and call it a day. We didn't. Tijorii exists because we believe Indian craft deserves to sit alongside the world's finest luggage — not imitate it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ────────────────────────────────────────────── -->
+  <footer>
+    <!-- Rajasthani border top of footer -->
+    <svg class="raj-divider" viewBox="0 0 1200 44" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="rajFooter" x="0" y="0" width="44" height="44" patternUnits="userSpaceOnUse">
+          <polygon points="22,2 42,22 22,42 2,22" fill="none" stroke="#c9a84c" stroke-width="0.8" stroke-opacity="0.5"/>
+          <polygon points="22,10 34,22 22,34 10,22" fill="none" stroke="#c9a84c" stroke-width="0.6" stroke-opacity="0.28"/>
+          <circle cx="22" cy="22" r="2" fill="#c9a84c" fill-opacity="0.55"/>
+          <circle cx="2"  cy="22" r="1.2" fill="#c9a84c" fill-opacity="0.28"/>
+          <circle cx="42" cy="22" r="1.2" fill="#c9a84c" fill-opacity="0.28"/>
+          <circle cx="22" cy="2"  r="1.2" fill="#c9a84c" fill-opacity="0.28"/>
+          <circle cx="22" cy="42" r="1.2" fill="#c9a84c" fill-opacity="0.28"/>
+        </pattern>
+      </defs>
+      <rect width="1200" height="44" fill="url(#rajFooter)"/>
+    </svg>
+    <div class="gold-rule" style="padding:0 5%;"><div class="gold-rule-diamond"></div></div>
+
+    <div class="footer-inner">
+      <span class="footer-logo">Tijorii</span>
+      <p class="footer-tagline">Crafted in India. Carried Everywhere.</p>
+      <ul class="footer-links">
+        <li><a href="#our-story">Our Story</a></li>
+        <li><a href="#craftsmanship">Craftsmanship</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#why-tijorii">Why Tijorii</a></li>
+      </ul>
+      <p class="footer-copy">© 2025 Tijorii. All rights reserved. Made in India.</p>
+    </div>
+  </footer>
+
+  <script>
+    // ─── Hamburger menu ────────────────────────────────────
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    });
+
+    // ─── Fade-in on scroll ─────────────────────────────────
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Trigger hero elements immediately
+    document.querySelectorAll('#hero .fade-in').forEach((el, i) => {
+      setTimeout(() => el.classList.add('visible'), 100 + i * 150);
+    });
+
+    // ─── Email form ────────────────────────────────────────
+    document.getElementById('notifyForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = document.getElementById('emailInput').value;
+      if (email) {
+        this.style.display = 'none';
+        const ty = document.getElementById('thankYou');
+        ty.style.display = 'block';
+        ty.textContent = `Thank you. We've noted ${email} — we'll be in touch when pre-orders open.`;
+      }
+    });
+  </script>
+
+</body>
+</html>
